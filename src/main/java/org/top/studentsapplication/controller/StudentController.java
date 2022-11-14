@@ -56,11 +56,9 @@ public class StudentController {
     }
 
     // Обработчик для сохранения студента
-    @PostMapping("/edit/{id}")
-    public String updateStudent(@ModelAttribute(value = "student") Student student, @PathVariable("id") Integer id) {
-        Optional<Student> update =  service.getById(id);
-        Student updateSave = update.get();
-        service.updateStudent(updateSave);
+    @PostMapping("/update")
+    public String updateStudent(@ModelAttribute(value = "student") Student student) {
+        service.updateStudent(student);
         return "redirect:/students";
     }
 

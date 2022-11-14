@@ -55,7 +55,7 @@ public class StudentController {
 
     }
 
-    // Обработчик для сохранения студента
+    // Обработчик для обновления студента
     @PostMapping("/update")
     public String updateStudent(@ModelAttribute(value = "student") Student student) {
         service.updateStudent(student);
@@ -82,6 +82,5 @@ public class StudentController {
         return "student-info";
 
     }
-
 
 }

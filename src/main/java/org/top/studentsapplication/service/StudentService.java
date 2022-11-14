@@ -34,12 +34,12 @@ public class StudentService {
     }
 
     // Получение студента по id
-    public Optional<Student> getById(Integer id){
+    public Optional<Student> getById(Integer id) {
         return repository.findById(id);
     }
 
     // Редактирование полей студента
-    public void  updateStudent(Student student) {
+    public void updateStudent(Student student) {
         Optional<Student> optionalStudent = getById(student.getId());
         if (optionalStudent.isPresent()) {
             Student editedStudent = optionalStudent.get();
@@ -49,13 +49,5 @@ public class StudentService {
                 repository.save(editedStudent);
             }
         }
-    }
-
-
-    public  Optional<Student> showInfoStudent(Integer id) {
-        // 1. найти студента
-     Optional<Student> student = repository.findById(id);
-        // 2. если такой студент, то вывести все его поля
-        return student;
     }
 }

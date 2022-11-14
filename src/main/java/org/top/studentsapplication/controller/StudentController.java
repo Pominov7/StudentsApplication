@@ -75,7 +75,7 @@ public class StudentController {
     // показать  студента
     @GetMapping("/details/{id}")
     public String infoStudent(@PathVariable("id") Integer id, Model model) {
-        Optional<Student> student = service.showInfoStudent(id);
+        Optional<Student> student = service.getById(id);
         Student getStudent = student.get();
         model.addAttribute("firstName", getStudent.getFirstName());
         model.addAttribute("lastName", getStudent.getLastName());

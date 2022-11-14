@@ -39,10 +39,6 @@ public class Student {
         this.lastName = lastName;
     }
 
-    //    @Override
-//    public String toString() {
-//        return id + " - " + firstName + " - " + lastName;
-//    }
     @Override
     public String toString() {
         return String.format("%-4s %-18s %-16s",

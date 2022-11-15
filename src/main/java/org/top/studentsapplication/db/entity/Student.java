@@ -1,4 +1,4 @@
-package org.top.studentsapplication.db;
+package org.top.studentsapplication.db.entity;
 
 import javax.persistence.*;
 
@@ -14,6 +14,19 @@ public class Student {
 
     @Column(nullable = false, length = 200)
     private String lastName;
+
+
+    @ManyToOne
+    @JoinColumn(name = "group_id",nullable = true)
+    private Group group;
+
+    public Group getGroup() {
+        return group;
+    }
+
+    public void setGroup(Group group) {
+        this.group = group;
+    }
 
     public Integer getId() {
         return id;

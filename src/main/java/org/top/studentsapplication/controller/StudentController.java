@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.top.studentsapplication.db.Student;
+import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.service.StudentService;
 
 import java.util.List;
@@ -72,15 +72,11 @@ public class StudentController {
         return "student-update";
     }
 
-    // показать  студента
     @GetMapping("/details/{id}")
     public String infoStudent(@PathVariable("id") Integer id, Model model) {
-        Optional<Student> student = service.getById(id);
-        Student getStudent = student.get();
-        model.addAttribute("firstName", getStudent.getFirstName());
-        model.addAttribute("lastName", getStudent.getLastName());
+        Student student = service.getById(id).get();
+        model.addAttribute(student);
         return "student-info";
 
     }
-
 }

@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>Update student</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container-fluid text-center">
-    <h1>Welcome to Students App Application</h1>
-    <a th:href="@{/students}" class="header">Manage students</a>
+<h1>Something went wrong! </h1>
+<h2>[[${message}]]</h2>
+<a th:href="@{/}">Go Home</a>
 </div>
-<div>
-    <footer th:insert="layout/layouts.html :: footer "></footer>
-</div>
-
 </body>
 </html>

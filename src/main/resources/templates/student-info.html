@@ -15,17 +15,15 @@
     <dd class="list-inline-item"> <p ><span th:text="${id}"></span></p></dd>
 
     <dt class="list-inline-item">Имя</dt>
-    <dd class="list-inline-item"><p><span th:text="${firstName}"></span></p></dd>
+    <dd class="list-inline-item"><p><span th:text="${student.firstName}"></span></p></dd>
 
     <dt class="list-inline-item">Фамилия</dt>
-    <dd class="list-inline-item"><p><span th:text="${lastName}"></span></p></dd>
+    <dd class="list-inline-item"><p><span th:text="${student.lastName}"></span></p></dd>
     </dl>
 </div>
-<!--<div class="container-fluid text-center" th:object="${student}">-->
-<!--    <h2>Student</h2>-->
-<!--    <p><span th:text="'id: ' +${id}"></span></p>-->
-<!--    <p><span th:text="'firstName: ' + ${firstName}"></span></p>-->
-<!--    <p><span th:text="'lastName: ' + ${lastName}"></span></p>-->
-<!--</div>-->
+
+<div class="container-fluid text-center fixed-bottom text-bg-dark " th:fragment="footer">
+    <h5>Created by Pominov 2022 &copy;</h5>
+</div>
 </body>
 </html>

@@ -1,8 +1,8 @@
 package org.top.studentsapplication.service;
 
 import org.springframework.stereotype.Service;
-import org.top.studentsapplication.db.Student;
-import org.top.studentsapplication.db.StudentsRepository;
+import org.top.studentsapplication.db.entity.Student;
+import org.top.studentsapplication.db.repository.StudentsRepository;
 
 import java.util.List;
 import java.util.Optional;

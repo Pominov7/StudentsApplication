@@ -6,13 +6,15 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
+<header th:insert="layout/layouts.html :: header "></header>
+<br>
 <div class="container-fluid text-center">
     <!-- сообщение -->
     <div th:if="${message != null}" class="alert alert-success">
         [[${message}]]
     </div>
     <table class="table table-bordered">
-        <thead class="table-dark">
+        <thead class="table-primary">
         <tr>
             <th>ID</th>
             <th>Имя</th>
@@ -38,8 +40,8 @@
     <!-- ссылка на добавление нового студента -->
     <a th:href="@{/students/new}"> Add new Student </a>
 </div>
-<div class="container-fluid text-center fixed-bottom text-bg-dark " th:fragment="footer">
-    <h5>Created by Pominov 2022 &copy;</h5>
+<div>
+    <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>
 </html>

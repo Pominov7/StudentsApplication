@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new Group</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <h1>Add new group</h1>
+    <!-- форма добавления группы -->
+    <form method="post" th:action="@{/groups/newGroup}" th:object="${group}">
+        <!-- поле имени -->
+        <label>Group Name: </label>
+        <label>
+            <input type="text" th:field="*{groupName}" required minlength="1" maxlength="50"/>
+        </label>
+
+        <!-- кнопка сохранить -->
+        <button type="submit" class="btn btn-success">Save</button>
+        <!-- кнопка отмены -->
+        <a th:href="@{/groups}" class="btn btn-danger">Cancel</a>
+    </form>
+</div>
+<div>
+    <footer th:insert="layout/layouts.html :: footer "></footer>
+</div>
+</body>
+</html>

@@ -1,22 +1,28 @@
 package org.top.studentsapplication.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Student;
+import org.top.studentsapplication.service.GroupService;
 import org.top.studentsapplication.service.StudentService;
 
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/students")
 public class StudentController {
     private final StudentService service;
 
-    public StudentController(StudentService service) {
+    @Autowired
+    private final GroupService groupService;
+
+    public StudentController(StudentService service, GroupService groupService) {
         this.service = service;
+        this.groupService = groupService;
     }
 
     // READ (получить всех студентов)
@@ -24,13 +30,17 @@ public class StudentController {
     public String showAllStudents(Model model) {
         List<Student> listStudents = service.listAllStudents();
         model.addAttribute("listStudents", listStudents);
-        return "students";
+        return "students-list";
     }
 
     // CREATE (добавить студента)
     @GetMapping("/new")
     public String showNewStudentForm(Model model) {
         model.addAttribute("student", new Student());
+
+        //
+        List<Group> groups = groupService.listAllGroups();
+        model.addAttribute("groupsList", groups);
         return "student-form";
     }
 

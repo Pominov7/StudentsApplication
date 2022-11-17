@@ -15,7 +15,7 @@ public class Group {
     @Column(nullable = false, length = 50)
     private String groupName;
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", cascade = {CascadeType.PERSIST})
     private Set<Student> students;
     public String getGroupName() {
         return groupName;

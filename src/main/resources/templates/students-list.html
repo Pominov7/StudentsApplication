@@ -5,7 +5,7 @@
     <title>Student</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
 <header th:insert="layout/layouts.html :: header "></header>
 <br>
 <div class="container-fluid text-center">
@@ -19,6 +19,7 @@
             <th>ID</th>
             <th>Имя</th>
             <th>Фамилия</th>
+            <th>Группа</th>
             <th></th>
         </tr>
         </thead>
@@ -28,6 +29,8 @@
                 <td>[[${student.id}]]</td>
                 <td>[[${student.firstName}]]</td>
                 <td>[[${student.lastName}]]</td>
+                <td th:if = "${student.group != null}">[[${student.group.groupName}]]</td>
+                <td th:if = "${student.group == null}">NONE</td>
                 <td>
                     <a th:href="@{'/students/edit/' + ${student.id}}" class="btn btn-secondary">Edit</a>
                     <a th:href="@{'/students/delete/' + ${student.id}}" class="btn btn-danger">Delete</a>

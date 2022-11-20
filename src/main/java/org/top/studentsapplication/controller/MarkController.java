@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.top.studentsapplication.db.entity.Mark;
-import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.MarkService;
 
 import java.util.List;
@@ -15,7 +14,6 @@ import java.util.List;
 public class MarkController {
 
     private final MarkService markService;
-
 
     public MarkController(MarkService markService) {
         this.markService = markService;

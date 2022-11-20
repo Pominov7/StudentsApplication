@@ -18,6 +18,7 @@ public class SubjectService {
 
     }
 
+    // вывод списка предметов
     public List<Subject> listAllSubjects() {
         return (List<Subject>) subjectRepository.findAll();
     }
@@ -27,7 +28,7 @@ public class SubjectService {
         return subjectRepository.findById(id);
     }
 
-
+    // сохранить предмет в БД
     public Subject saveSubject(Subject subject) {
         return subjectRepository.save(subject);
     }

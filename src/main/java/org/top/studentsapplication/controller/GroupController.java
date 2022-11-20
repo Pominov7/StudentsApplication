@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.top.studentsapplication.db.entity.Group;
-import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.StudentsRepository;
 import org.top.studentsapplication.service.GroupService;
 
@@ -62,14 +61,14 @@ public class GroupController {
 
     }
 
-    // Обработчик для обновления студента
+    // Обработчик для обновления группы
     @PostMapping("/update")
     public String updateGroup(@ModelAttribute(value = "group") Group group) {
         groupService.updateGroup(group);
         return "redirect:/groups";
     }
 
-    // UPDATE (редактирование полей студента)
+    // UPDATE (редактирование полей группы)
     @GetMapping("/edit/{id}")
     public String showUpdateFormGroup(@PathVariable("id") Integer id, Model model) {
         Group group = groupService.getById(id)

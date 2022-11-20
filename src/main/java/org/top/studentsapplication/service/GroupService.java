@@ -1,9 +1,7 @@
 package org.top.studentsapplication.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Group;
-import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.GroupRepository;
 
 import java.util.List;
@@ -29,7 +27,7 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
-    // Получение студента по id
+    // Получение группы по id
     public Optional<Group> getById(Integer id) {
         return groupRepository.findById(id);
     }

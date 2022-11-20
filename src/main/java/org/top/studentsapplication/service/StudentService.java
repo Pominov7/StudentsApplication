@@ -46,6 +46,7 @@ public class StudentService {
             if (!editedStudent.equals(student)) {
                 editedStudent.setFirstName(student.getFirstName());
                 editedStudent.setLastName(student.getLastName());
+                editedStudent.setGroup(student.getGroup());
                 repository.save(editedStudent);
             }
         }

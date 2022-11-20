@@ -22,7 +22,7 @@
         </label>
 
         <!-- поле группы -->
-        <label>Группа: </label>
+        <label>Group: </label>
         <select th:field="*{group}">
             <th:block th:each="group: ${groupsList}">
                 <option th:value="${group.id}">[[${group.groupName}]]</option>

@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.SubjectService;
 
@@ -23,7 +22,7 @@ public class SubjectController {
     // READ (получить все предметы)
     @GetMapping
     public String showAllSubjects(Model model) {
-        List<Subject> listSubjects =subjectService.listAllSubjects();
+        List<Subject> listSubjects = subjectService.listAllSubjects();
         model.addAttribute("listSubjects", listSubjects);
         return "subjects-list";
     }

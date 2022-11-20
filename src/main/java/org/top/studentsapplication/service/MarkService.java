@@ -16,6 +16,7 @@ public class MarkService {
         this.marksRepository = marksRepository;
     }
 
+    // вывод списка оценок
     public List<Mark> listAllMarks() {
         return (List<Mark>) marksRepository.findAll();
     }

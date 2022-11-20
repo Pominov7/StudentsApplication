@@ -42,14 +42,6 @@ public class Subject {
         return id;
     }
 
-//    public Student getStudent() {
-//        return student;
-//    }
-//
-//    public void setStudent(Student student) {
-//        this.student = student;
-//    }
-
     @Override
     public String toString() {
         return String.format("%-4s %-15s",

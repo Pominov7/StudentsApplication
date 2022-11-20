@@ -4,28 +4,31 @@
     <meta charset="UTF-8">
     <title>Update group</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body>
-<div class="container-fluid text-center">
-    <h1>Update group</h1>
-    <!-- форма изменения студента -->
-    <form method="post" th:action="@{/groups/update}" th:object="${group}">
-        <!-- поле названия группы -->
-        <label>
-            <input type="hidden" th:field="*{id}"/>
-        </label>
-        <label>Group Name: </label>
-        <label>
-            <input type="text" th:field="*{groupName}" required minlength="1" maxlength="50"/>
-        </label>
-        <!-- кнопка сохранить -->
-        <button type="submit" class="btn btn-success">Save</button>
-        <!-- кнопка отмены -->
-        <a th:href="@{/groups}" class="btn btn-danger">Cancel</a>
-    </form>
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid text-center">
+            <h1>Update group</h1>
+            <!-- форма изменения студента -->
+            <form method="post" th:action="@{/groups/update}" th:object="${group}">
+                <!-- поле названия группы -->
+                <label>
+                    <input type="hidden" th:field="*{id}"/>
+                </label>
+                <label>Group Name: </label>
+                <label>
+                    <input type="text" th:field="*{groupName}" required minlength="1" maxlength="50"/>
+                </label>
+                <!-- кнопка сохранить -->
+                <button type="submit" class="btn btn-success">Save</button>
+                <!-- кнопка отмены -->
+                <a th:href="@{/groups}" class="btn btn-danger">Cancel</a>
+            </form>
 
-</div>
-<div>
+        </div>
+    </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>

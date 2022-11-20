@@ -1,47 +1,50 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Subject</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <title>Subject</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
-<header th:insert="layout/layouts.html :: header "></header>
-<br>
-<div class="container-fluid text-center">
-  <!-- сообщение -->
-  <div th:if="${message != null}" class="alert alert-success">
-    [[${message}]]
-  </div>
-  <table class="table table-bordered">
-    <thead class="table-primary">
-    <tr>
-      <th>ID</th>
-      <th>Оценки</th>
-      <th>Дата</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <th:block th:each="mark: ${listMarks}">
-      <tr>
-        <td>[[${mark.id}]]</td>
-        <td>[[${mark.assessment}]]</td>
-        <td>[[${mark.date}]]</td>
-        <td>
-          <a th:href="@{'/subjects/edit/' + ${mark.id}}" class="btn btn-secondary">Edit</a>
-          <a th:href="@{'/subjects/delete/' + ${mark.id}}" class="btn btn-danger">Delete</a>
-          <a th:href="@{'/subjects/details/' + ${mark.id}}" class="btn btn-warning">Details</a>
-        </td>
-      </tr>
-    </th:block>
-    </tbody>
-  </table>
-  <!-- ссылка на добавление нового студента -->
-  <!--    <a th:href="@{/subjects/newSubjects}"> Add new Subject </a>-->
-</div>
-<div>
-  <footer th:insert="layout/layouts.html :: footer "></footer>
+<div class="wrapper">
+    <div class="content">
+        <header th:insert="layout/layouts.html :: header "></header>
+        <br>
+        <div class="container-fluid text-center">
+            <!-- сообщение -->
+            <div th:if="${message != null}" class="alert alert-success">
+                [[${message}]]
+            </div>
+            <table class="table table-bordered">
+                <thead class="table-primary">
+                <tr>
+                    <th>ID</th>
+                    <th>Оценки</th>
+                    <th>Дата</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="mark: ${listMarks}">
+                    <tr>
+                        <td>[[${mark.id}]]</td>
+                        <td>[[${mark.assessment}]]</td>
+                        <td>[[${mark.date}]]</td>
+                        <td>
+                            <a th:href="@{'/subjects/edit/' + ${mark.id}}" class="btn btn-secondary">Edit</a>
+                            <a th:href="@{'/subjects/delete/' + ${mark.id}}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{'/subjects/details/' + ${mark.id}}" class="btn btn-warning">Details</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <!-- ссылка на добавление нового студента -->
+            <!--    <a th:href="@{/subjects/newSubjects}"> Add new Subject </a>-->
+        </div>
+    </div>
+    <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>
 </html>

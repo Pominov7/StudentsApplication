@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <title>Students</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body>
-
+<div class="wrapper">
+    <div class="content">
 <div class="container-fluid text-center" th:object="${student}">
     <h2>Student</h2>
     <dl class="row">
@@ -20,8 +22,7 @@
         <dd class="list-inline-item"><p><span th:text="${student.lastName}"></span></p></dd>
     </dl>
 </div>
-
-<div>
+    </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>

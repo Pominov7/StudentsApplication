@@ -4,23 +4,23 @@
     <meta charset="UTF-8">
     <title>Group</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body>
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid text-center" th:object="${group}">
+            <h2>Group</h2>
+            <dl class="row">
+                <dt class="list-inline-item">ID</dt>
+                <dd class="list-inline-item"><p><span th:text="${id}"></span></p></dd>
 
+                <dt class="list-inline-item">Group</dt>
+                <dd class="list-inline-item"><p><span th:text="${group.groupName}"></span></p></dd>
 
-<div class="container-fluid text-center" th:object="${group}">
-    <h2>Group</h2>
-    <dl class="row">
-        <dt class="list-inline-item">ID</dt>
-        <dd class="list-inline-item"><p><span th:text="${id}"></span></p></dd>
-
-        <dt class="list-inline-item">Group/dt>
-        <dd class="list-inline-item"><p><span th:text="${group.groupName}"></span></p></dd>
-
-    </dl>
-</div>
-
-<div>
+            </dl>
+        </div>
+    </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>

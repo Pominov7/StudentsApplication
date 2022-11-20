@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <title>Add new Student</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
 <body>
+<div class="wrapper">
+    <div class="content">
 <div class="container-fluid text-center">
     <h1>Add new student</h1>
     <!-- форма добавления студента -->
@@ -35,8 +38,8 @@
         <a th:href="@{/students}" class="btn btn-danger">Cancel</a>
     </form>
 </div>
-<div>
+    </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>
-</div>
+    </div>
 </body>
 </html>

@@ -1,37 +1,54 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <title>Update student</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <meta charset="UTF-8">
+    <title>Update student</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body>
 <div class="container-fluid text-center">
-  <h1>Update student</h1>
-  <!-- форма изменения студента -->
-  <form method="post" th:action="@{/students/update}" th:object="${student}">
-    <!-- поле имени -->
-    <label>
-    <input type="hidden" th:field="*{id}"/>
-    </label>
-    <label>First Name: </label>
-    <label>
-      <input type="text" th:field="*{firstName}" required minlength="1" maxlength="50"/>
-    </label>
-    <!-- поле фамилии -->
-    <label>Last Name: </label>
-    <label>
-      <input type="text" th:field="*{lastName}" required minlength="1" maxlength="50"/>
-    </label>
-    <!-- кнопка сохранить -->
-    <button type="submit" class="btn btn-success">Save</button>
-    <!-- кнопка отмены -->
-    <a th:href="@{/students}" class="btn btn-danger">Cancel</a>
-  </form>
+    <h1>Update student</h1>
+    <!-- форма изменения студента -->
+    <form method="post" th:action="@{/students/update}" th:object="${student}">
+        <!-- поле имени -->
+        <label>
+            <input type="hidden" th:field="*{id}"/>
+        </label>
+        <label>First Name: </label>
+        <label>
+            <input type="text" th:field="*{firstName}" required minlength="1" maxlength="50"/>
+        </label>
+        <!-- поле фамилии -->
+        <label>Last Name: </label>
+        <label>
+            <input type="text" th:field="*{lastName}" required minlength="1" maxlength="50"/>
+        </label>
+        <!-- поле группы -->
+        <label>Group: </label>
+        <select th:field="*{group}">
+            <th:block th:each="group: ${groupsList}">
+                <option th:value="${group.id}">[[${group.groupName}]]</option>
+            </th:block>
+        </select>
+        <!-- поле предмета -->
+        <label>Subject: </label>
+        <select th:field="*{subject}">
+            <th:block th:each="subject: ${subjectsList}">
+                <option th:value="${subject.id}">[[${subject.subjectName}]]</option>
+            </th:block>
+        </select>
+        <!-- кнопка сохранить -->
+        <button type="submit" class="btn btn-success">Save</button>
+        <!-- кнопка отмены -->
+        <a th:href="@{/students}" class="btn btn-danger">Cancel</a>
+        <br>
+
+    </form>
+
 
 </div>
 <div>
-  <footer th:insert="layout/layouts.html :: footer "></footer>
+    <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
 </body>
 </html>

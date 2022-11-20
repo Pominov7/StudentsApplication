@@ -50,4 +50,14 @@ public class StudentService {
             }
         }
     }
+
+    // получение студента по строке
+    public List<Student> findByContains(String match) {
+        if (match == null || match.equals("")) {
+            return ((List<Student>) repository.findAll());
+        }
+        return ((List<Student>) repository.findAll())
+                .stream().filter(s -> s.getFirstName()
+                        .contains(match) || s.getLastName().contains(match)).toList();
+    }
 }

@@ -7,7 +7,7 @@
 </head>
 <body>
 <header th:fragment="header">
-    <ul class="nav justify-content-center bg-white" >
+    <ul class="nav justify-content-center bg-white">
         <li class="nav-item">
             <a class="nav-link " th:href="@{/students}">Студенты</a>
         </li>
@@ -15,17 +15,14 @@
             <a class="nav-link" th:href="@{/groups}">Группы</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Факультеты</a>
+            <a class="nav-link" th:href="@{/subjects}">Предметы</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="">Новости</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="">Контакты</a>
+            <a class="nav-link" th:href="@{/marks}">Оценки</a>
         </li>
     </ul>
 </header>
-<div class="container-fluid text-center fixed-bottom text-bg-dark " th:fragment="footer" >
+<div class="container-fluid text-center fixed-bottom text-bg-dark " th:fragment="footer">
     <p>Created by Pominov 2022 &copy;</p>
 </div>
 

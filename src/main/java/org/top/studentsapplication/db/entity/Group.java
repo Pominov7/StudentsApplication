@@ -17,6 +17,15 @@ public class Group {
 
     @OneToMany(mappedBy = "group", cascade = {CascadeType.PERSIST})
     private Set<Student> students;
+
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
+
     public String getGroupName() {
         return groupName;
     }

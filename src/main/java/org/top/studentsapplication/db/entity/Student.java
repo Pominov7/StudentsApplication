@@ -1,6 +1,7 @@
 package org.top.studentsapplication.db.entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "student_t")
@@ -15,13 +16,24 @@ public class Student {
     @Column(nullable = false, length = 200)
     private String lastName;
 
+    @ManyToOne
+    @JoinColumn(name = "group_id", nullable = true)
+    private Group group;
 
     @ManyToOne
-    @JoinColumn(name = "group_id",nullable = true)
-    private Group group;
+    @JoinColumn(name = "subject_id", nullable = true)
+    private Subject subject;
 
     public Group getGroup() {
         return group;
+    }
+
+    public Subject getSubject() {
+        return subject;
+    }
+
+    public void setSubject(Subject subject) {
+        this.subject = subject;
     }
 
     public void setGroup(Group group) {

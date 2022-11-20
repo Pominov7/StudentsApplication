@@ -29,6 +29,10 @@ public class GroupService {
         return groupRepository.save(group);
     }
 
+    // Получение студента по id
+    public Optional<Group> getById(Integer id) {
+        return groupRepository.findById(id);
+    }
 
     // удалить группу по id
     public void deleteGroupByID(Integer id) {
@@ -36,5 +40,18 @@ public class GroupService {
         Optional<Group> result = groupRepository.findById(id);
         // 2. если такая группа есть, то удалить её
         result.ifPresent(groupRepository::delete);
+    }
+
+
+    // Редактирование полей группы
+    public void updateGroup(Group group) {
+        Optional<Group> optionalGroup = getById(group.getId());
+        if (optionalGroup.isPresent()) {
+            Group editedGroup = optionalGroup.get();
+            if (!editedGroup.equals(group)) {
+                editedGroup.setGroupName(group.getGroupName());
+                groupRepository.save(editedGroup);
+            }
+        }
     }
 }

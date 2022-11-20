@@ -13,6 +13,15 @@
     <div th:if="${message != null}" class="alert alert-success">
         [[${message}]]
     </div>
+
+    <!-- фильтр-->
+    <div method="get" th:action="@{/students}" th:object="${containsFilter}">
+        <form>
+            <input type="text" th:field="*{match}"/>
+            <button>Find</button>
+        </form>
+    </div>
+    <br>
     <table class="table table-bordered">
         <thead class="table-primary">
         <tr>
@@ -29,8 +38,8 @@
                 <td>[[${student.id}]]</td>
                 <td>[[${student.firstName}]]</td>
                 <td>[[${student.lastName}]]</td>
-                <td th:if = "${student.group != null}">[[${student.group.groupName}]]</td>
-                <td th:if = "${student.group == null}">NONE</td>
+                <td th:if="${student.group != null}">[[${student.group.groupName}]]</td>
+                <td th:if="${student.group == null}">NONE</td>
                 <td>
                     <a th:href="@{'/students/edit/' + ${student.id}}" class="btn btn-secondary">Edit</a>
                     <a th:href="@{'/students/delete/' + ${student.id}}" class="btn btn-danger">Delete</a>

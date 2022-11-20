@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Group</title>
+    <title>Subject</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
@@ -17,26 +17,26 @@
         <thead class="table-primary">
         <tr>
             <th>ID</th>
-            <th>Группа</th>
+            <th>Предмет</th>
             <th></th>
         </tr>
         </thead>
         <tbody>
-        <th:block th:each="group: ${listGroups}">
+        <th:block th:each="subject: ${listSubjects}">
             <tr>
-                <td>[[${group.id}]]</td>
-                <td>[[${group.groupName}]]</td>
+                <td>[[${subject.id}]]</td>
+                <td>[[${subject.subjectName}]]</td>
                 <td>
-                    <a th:href="@{'/groups/edit/' + ${group.id}}" class="btn btn-secondary">Edit</a>
-                    <a th:href="@{'/groups/delete/' + ${group.id}}" class="btn btn-danger">Delete</a>
-                    <a th:href="@{'/groups/details/' + ${group.id}}" class="btn btn-warning">Details</a>
+                    <a th:href="@{'/subjects/edit/' + ${subject.id}}" class="btn btn-secondary">Edit</a>
+                    <a th:href="@{'/subjects/delete/' + ${subject.id}}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{'/subjects/details/' + ${subject.id}}" class="btn btn-warning">Details</a>
                 </td>
             </tr>
         </th:block>
         </tbody>
     </table>
     <!-- ссылка на добавление нового студента -->
-    <a th:href="@{/groups/newGroup}"> Add new Group </a>
+<!--    <a th:href="@{/subjects/newSubjects}"> Add new Subject </a>-->
 </div>
 <div>
     <footer th:insert="layout/layouts.html :: footer "></footer>

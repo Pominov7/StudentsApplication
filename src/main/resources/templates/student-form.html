@@ -24,11 +24,10 @@
         <!-- поле группы -->
         <label>Группа: </label>
         <select th:field="*{group}">
-        <th:block th:each="group: ${groupsList}">
-            <option th:value="${group.id}">[[${group.groupName}]]</option>
-        </th:block>
-    </select>
-
+            <th:block th:each="group: ${groupsList}">
+                <option th:value="${group.id}">[[${group.groupName}]]</option>
+            </th:block>
+        </select>
 
         <!-- кнопка сохранить -->
         <button type="submit" class="btn btn-success">Save</button>

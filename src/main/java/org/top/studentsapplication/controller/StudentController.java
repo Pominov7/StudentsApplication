@@ -25,22 +25,25 @@ public class StudentController {
     private GroupService groupService;
 
     @Autowired
-    private SubjectService subjectService;
+    private StudentNameFilter containsFilter;
 
     // READ (получить всех студентов)
     @GetMapping
-    public String showAllStudents(@RequestParam(required = false) StudentNameFilter filter, Model model) {
-//        StudentNameFilter filter = (StudentNameFilter) model.getAttribute("containsFilter");
-        List<Student> listStudents = null;
-        if (filter == null) {
-            listStudents = studentService.listAllStudents();
-        } else {
-            listStudents = filter.getFilteredStudents();
-        }
+    public String showAllStudents(Model model) {
+        List<Student> listStudents = studentService.listAllStudents();
         model.addAttribute("listStudents", listStudents);
-        model.addAttribute("containsFilter", new StudentNameFilter());
+        model.addAttribute("containsFilter", containsFilter);
         return "students-list";
     }
+
+    @PostMapping
+    public String showFilteredStudents(StudentNameFilter filter, Model model) {
+        List<Student> listStudents = filter.getFilteredStudents(studentService);
+        model.addAttribute("listStudents", listStudents);
+        model.addAttribute("containsFilter", filter);
+        return "students-list";
+    }
+
 
     // CREATE (добавить студента)
     @GetMapping("/new")

@@ -1,5 +1,6 @@
 package org.top.studentsapplication.service;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.StudentsRepository;
@@ -7,7 +8,7 @@ import org.top.studentsapplication.db.repository.StudentsRepository;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Component
 public class StudentService {
     private final StudentsRepository repository;
 
@@ -52,13 +53,13 @@ public class StudentService {
         }
     }
 
-    // получение студента по строке
+    // получения студентов по строке
     public List<Student> findByContains(String match) {
-        if (match == null || match.equals("")) {
-            return ((List<Student>) repository.findAll());
-        }
+        if (match == null || match.equals(""))
+            return (List<Student>) repository.findAll();
         return ((List<Student>) repository.findAll())
-                .stream().filter(s -> s.getFirstName()
-                        .contains(match) || s.getLastName().contains(match)).toList();
+                .stream()
+                .filter(s -> s.getFirstName().contains(match) || s.getLastName().contains(match))
+                .toList();
     }
 }

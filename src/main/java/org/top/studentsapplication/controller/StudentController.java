@@ -90,9 +90,6 @@ public class StudentController {
 
         List<Group> groups = groupService.listAllGroups();
         model.addAttribute("groupsList", groups);
-
-        List<Subject> subjects = subjectService.listAllSubjects();
-        model.addAttribute("subjectsList", subjects);
         return "student-update";
     }
 

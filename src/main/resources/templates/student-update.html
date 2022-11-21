@@ -33,13 +33,6 @@
                 <option th:value="${group.id}">[[${group.groupName}]]</option>
             </th:block>
         </select>
-        <!-- поле предмета -->
-        <label>Subject: </label>
-        <select th:field="*{subject}">
-            <th:block th:each="subject: ${subjectsList}">
-                <option th:value="${subject.id}">[[${subject.subjectName}]]</option>
-            </th:block>
-        </select>
         <!-- кнопка сохранить -->
         <button type="submit" class="btn btn-success">Save</button>
         <!-- кнопка отмены -->

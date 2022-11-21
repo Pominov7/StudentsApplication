@@ -2,6 +2,7 @@ package org.top.studentsapplication.service;
 
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Group;
+import org.top.studentsapplication.db.entity.Mark;
 import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.db.repository.SubjectRepository;
 
@@ -33,5 +34,26 @@ public class SubjectService {
         return subjectRepository.save(subject);
     }
 
+    // Редактирование предмета студента
+    public void updateSubject(Subject subject) {
+        if (subject.getId() != null) {
+            Optional<Subject> optionalItem = subjectRepository.findById(subject.getId());
+            if (optionalItem.isPresent()) {
+                Subject editedItem = optionalItem.get();
 
+                if (!editedItem.equals(subject)) {
+                    editedItem.setSubjectName(subject.getSubjectName());
+                    subjectRepository.save(editedItem);
+                }
+            }
+        } else {
+            subjectRepository.save(subject);
+        }
+    }
+
+    // удалить предмет по id
+    public void deleteSubjectByID(Integer id) {
+        Optional<Subject> result = subjectRepository.findById(id);
+        result.ifPresent(subjectRepository::delete);
+    }
 }

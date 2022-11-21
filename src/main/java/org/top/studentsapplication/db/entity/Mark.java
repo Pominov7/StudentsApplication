@@ -1,6 +1,9 @@
 package org.top.studentsapplication.db.entity;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -14,14 +17,15 @@ public class Mark {
     private Integer assessment;
 
     @Column(nullable = false, length = 200)
-    private Date date;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate date;
 
     @ManyToOne
-    @JoinColumn(name = "student_id", nullable = true)
+    @JoinColumn(name = "student_id", nullable = false)
     private Student student;
 
     @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = true)
+    @JoinColumn(name = "subject_id", nullable = false)
     private Subject subject;
 
     public Integer getId() {
@@ -40,11 +44,11 @@ public class Mark {
         this.assessment = assessment;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Update group</title>
+    <title>Update subject</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
@@ -10,16 +10,16 @@
 <div class="wrapper">
     <div class="content">
         <div class="container-fluid text-center">
-            <h1>Update group</h1>
-            <!-- форма изменения группы -->
-            <form method="post" th:action="@{/groups/update}" th:object="${group}">
-                <!-- поле названия группы -->
+            <h1>Update subject</h1>
+            <!-- форма изменения предмета -->
+            <form method="post" th:action="@{/subjects/update}" th:object="${subject}">
+                <!-- поле названия предмета -->
                 <label>
                     <input type="hidden" th:field="*{id}"/>
                 </label>
-                <label>Group Name: </label>
+                <label>Subject Name: </label>
                 <label>
-                    <input type="text" th:field="*{groupName}" required minlength="1" maxlength="50"/>
+                    <input type="text" th:field="*{subjectName}" required minlength="1" maxlength="50"/>
                 </label>
                 <!-- кнопка сохранить -->
                 <button type="submit" class="btn btn-success">Save</button>

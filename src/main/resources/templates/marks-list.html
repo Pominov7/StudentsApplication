@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Subject</title>
+    <title>Mark</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
@@ -19,29 +19,33 @@
             <table class="table table-bordered">
                 <thead class="table-primary">
                 <tr>
-                    <th>ID</th>
-                    <th>Оценки</th>
-                    <th>Дата</th>
-                    <th></th>
+                    <th>№</th>
+                    <th>Student</th>
+                    <th>Subject</th>
+                    <th>Date</th>
+                    <th>Mark</th>
+                    <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                <th:block th:each="mark: ${listMarks}">
+                <th:block th:each="mark, iterStat: ${listMarks}">
                     <tr>
-                        <td>[[${mark.id}]]</td>
-                        <td>[[${mark.assessment}]]</td>
-                        <td>[[${mark.date}]]</td>
+                        <td th:text="${iterStat.index}+1"></td>
+                        <td>[[${mark.getStudent()}]]</td>
+                        <td>[[${mark.getSubject()}]]</td>
+                        <td>[[${mark.getDate}]]</td>
+                        <td>[[${mark.getAssessment}]]</td>
                         <td>
-                            <a th:href="@{'/subjects/edit/' + ${mark.id}}" class="btn btn-secondary">Edit</a>
-                            <a th:href="@{'/subjects/delete/' + ${mark.id}}" class="btn btn-danger">Delete</a>
-                            <a th:href="@{'/subjects/details/' + ${mark.id}}" class="btn btn-warning">Details</a>
+                            <a th:href="@{'/marks/edit/' + ${mark.id}}" class="btn btn-secondary">Edit</a>
+                            <a th:href="@{'/marks/delete/' + ${mark.id}}" class="btn btn-danger">Delete</a>
+                            <a th:href="@{'/marks/details/' + ${mark.id}}" class="btn btn-warning">Details</a>
                         </td>
                     </tr>
                 </th:block>
                 </tbody>
             </table>
-            <!-- ссылка на добавление нового студента -->
-            <!--    <a th:href="@{/subjects/newSubjects}"> Add new Subject </a>-->
+
+            <a th:href="@{/marks/newMark}"> Add new Mark </a>
         </div>
     </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>

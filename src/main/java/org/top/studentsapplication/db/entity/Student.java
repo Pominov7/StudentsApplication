@@ -20,21 +20,11 @@ public class Student {
     @JoinColumn(name = "group_id", nullable = true)
     private Group group;
 
-    @ManyToOne
-    @JoinColumn(name = "subject_id", nullable = true)
-    private Subject subject;
 
     public Group getGroup() {
         return group;
     }
 
-    public Subject getSubject() {
-        return subject;
-    }
-
-    public void setSubject(Subject subject) {
-        this.subject = subject;
-    }
 
     public void setGroup(Group group) {
         this.group = group;

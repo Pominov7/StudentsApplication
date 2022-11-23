@@ -33,7 +33,7 @@ public class Subject {
 
     @Override
     public String toString() {
-        return String.format("%-4s %-15s",
-                id, subjectName);
+        return String.format("%-15s",
+                subjectName);
     }
 }

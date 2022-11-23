@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Mark</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="container-fluid text-center">
+            <h1>Update Mark</h1>
+
+            <form method="post" th:action="@{/marks/update}" th:object="${mark}">
+                <input type="hidden" th:field="*{id}"/>
+
+                <div style="margin-bottom: 25px" class="mb-3">
+                    <label>Student</label>
+                    <select required id="student" th:field="*{student}" class="form-control" disabled>
+                        <option th:each="student : ${student}" th:value="${student.id}"
+                                th:text="${student.toString()}"
+                                th:selected="${mark.getStudent()}"></option>
+                    </select>
+                </div>
+
+                <div style="margin-bottom: 25px" class="mb-3">
+                    <label>Subject</label>
+                    <select required id="subject" th:field="*{subject}" class="form-control" disabled>
+                        <option th:each="subject : ${subject}" th:value="${subject.id}"
+                                th:text="${subject.getSubjectName()}"
+                                th:selected="${mark.getSubject()}"></option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 25px" class="mb-3">
+                    <label for="date" class="form-label">Date</label>
+                    <input type="date" required id="date" th:field="*{date}" placeholder="day.month.year"
+                           class="form-control"/>
+                </div>
+
+                <div style="margin-bottom: 25px" class="mb-3">
+            <span class="input-group-addon">
+                <i class="glyphicon glyphicon-user"></i>
+            </span>
+                    <label>Mark</label>
+                    <input type="number" required pattern="[1-5]{1}" th:field="*{assessment}" placeholder="mark (*)"
+                           class="form-control"/>
+                </div>
+                <!-- кнопка сохранить -->
+                <button type="submit" class="btn btn-success">Save</button>
+                <!-- кнопка отмены -->
+                <a th:href="@{/marks}" class="btn btn-danger">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <footer th:insert="layout/layouts.html :: footer "></footer>
+</div>
+</body>
+</html>

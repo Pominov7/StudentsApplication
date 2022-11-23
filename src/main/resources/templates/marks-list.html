@@ -31,7 +31,7 @@
                 <th:block th:each="mark, iterStat: ${listMarks}">
                     <tr>
                         <td th:text="${iterStat.index}+1"></td>
-                        <td>[[${mark.getStudent()}]]</td>
+                        <td><a th:href="@{'/marks/marksStudentId/'}">[[${mark.getStudent()}]]</a> </td>
                         <td>[[${mark.getSubject()}]]</td>
                         <td>[[${mark.getDate}]]</td>
                         <td>[[${mark.getAssessment}]]</td>

@@ -6,6 +6,7 @@ import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.MarksRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -35,21 +36,15 @@ public class MarkService {
 
     // Редактирование оценки у студента
     public void updateMark(Mark mark) {
-        if (mark.getId() != null) {
-            Optional<Mark> optionalItem = marksRepository.findById(mark.getId());
-            if (optionalItem.isPresent()) {
-                Mark editedItem = optionalItem.get();
+        Optional<Mark> optionalItem = marksRepository.findById(mark.getId());
+        if (optionalItem.isPresent()) {
+            Mark editedItem = optionalItem.get();
 
-                if (!editedItem.equals(mark)) {
-                    editedItem.setStudent(mark.getStudent());
-                    editedItem.setSubject(mark.getSubject());
-                    editedItem.setDate(mark.getDate());
-                    editedItem.setAssessment(mark.getAssessment());
-                    marksRepository.save(editedItem);
-                }
+            if (!editedItem.equals(mark)) {
+                editedItem.setDate(mark.getDate());
+                editedItem.setAssessment(mark.getAssessment());
+                marksRepository.save(editedItem);
             }
-        } else {
-            marksRepository.save(mark);
         }
     }
 
@@ -57,6 +52,14 @@ public class MarkService {
     public void deleteMarkByID(Integer id) {
         Optional<Mark> result = marksRepository.findById(id);
         result.ifPresent(marksRepository::delete);
+    }
+
+    //вернуть список оценок для определенного студента
+    public List<Mark> listMarkStudentId(Integer id) {
+        return ((List<Mark>)marksRepository.findAll())
+                .stream()
+                .filter(s -> Objects.equals(s.getStudent().getId(), id))
+                .toList();
     }
 
 }

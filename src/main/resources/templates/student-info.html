@@ -12,7 +12,27 @@
         <header th:insert="layout/layouts.html :: header "></header>
         <br>
         <div class="container-fluid text-center" th:object="${student}">
-            <h2>Student</h2>
+            <h4>Student</h4>
+<!--            <table class="table table-borderless">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th  scope="col">ID</th>-->
+<!--                    <th scope="col">First Name</th>-->
+<!--                    <th scope="col">Last Name</th>-->
+<!--                    <th scope="col">Group</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr>-->
+<!--                    <td th:text="${id}">-->
+<!--                    <td th:text="${student.firstName}">-->
+<!--                    <td th:text="${student.lastName}">-->
+<!--                    <td th:if="${student.group != null}" th:text="${student.group.groupName}">-->
+<!--                    <td th:if="${student.group == null}" th:text="${'Group: none'}">-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+            <!-- Вывод информации о студенте -->
             <dl class="row">
                 <dt class="list-inline-item">ID</dt>
                 <dd class="list-inline-item"><p><span th:text="${id}"></span></p></dd>
@@ -32,6 +52,7 @@
                 </div>
             </dl>
 
+            <!-- Таблица оценок по предметам студента-->
             <h5>Table all marks</h5>
             <div th:if="!${#lists.isEmpty(listMarks)}">
                 <table class="table table-bordered">
@@ -53,6 +74,29 @@
                     </tr>
                     </tbody>
                 </table>
+
+                <!-- Средний балл по всем предметам-->
+                <div class="text-sm-start">
+                <div th:if="${avgScore != null}">
+                        <div th:each="result : ${avgScore}">
+                            <h6 th:text="${'Average score in all subjects: '+result}"></h6>
+                        </div>
+
+                </div>
+                <div th:if="${avgScore == null}">
+                    There is not a single subject to calculate the grade point average!!!
+                </div>
+                </div>
+                <!-- Средний балл по каждому предмету-->
+                <div class="text-sm-start">
+                    <div th:if="${average != null}">
+                        <h6 th:text="${'Average score for each subject: ' +  average}"></h6>
+                    </div>
+                    <div th:if="${average == null}">
+                        There is not a single subject to calculate the grade point average!!!
+                    </div>
+                </div>
+
             </div>
         </div>
         <div>

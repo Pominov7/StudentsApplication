@@ -18,7 +18,7 @@
                 <div style="margin-bottom: 25px" class="mb-3">
                     <label>Student</label>
                     <select required id="student" th:field="*{student}" class="form-control" disabled>
-                        <option th:each="student : ${student}" th:value="${student.id}"
+                        <option th:each="student : ${studentsList}" th:value="${student.id}"
                                 th:text="${student.toString()}"
                                 th:selected="${mark.getStudent()}"></option>
                     </select>
@@ -27,7 +27,7 @@
                 <div style="margin-bottom: 25px" class="mb-3">
                     <label>Subject</label>
                     <select required id="subject" th:field="*{subject}" class="form-control" disabled>
-                        <option th:each="subject : ${subject}" th:value="${subject.id}"
+                        <option th:each="subject : ${subjectList}" th:value="${subject.id}"
                                 th:text="${subject.getSubjectName()}"
                                 th:selected="${mark.getSubject()}"></option>
                     </select>

@@ -5,10 +5,7 @@ import org.top.studentsapplication.db.entity.Mark;
 import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.MarksRepository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class MarkService {
@@ -57,22 +54,28 @@ public class MarkService {
 
     //вернуть список оценок для определенного студента
     public List<Mark> listMarkStudentId(Integer id) {
-//        return ((List<Mark>)marksRepository.findAll())
-//                .stream()
-//                .filter(s -> Objects.equals(s.getStudent().getId(), id))
-//                .toList();
-        List<Mark> ass = (List<Mark>) marksRepository.findAll();
+        List<Mark> marks = (List<Mark>) marksRepository.findAll();
         List<Mark> result = new ArrayList<>();
-        for (Mark a : ass
+        for (Mark assessment : marks
         ) {
-            if (Objects.equals(a.getStudent().getId(), id)) {
-                result.add(a);
+            if (Objects.equals(assessment.getStudent().getId(), id)) {
+                result.add(assessment);
             }
         }
 
         return result;
 
     }
+
+    public List<String> findAvgMarksByStudentId(Integer studentId){
+        return marksRepository.findAvgMarksByStudentId(studentId);
+    }
+
+    public Double avgScoreSubjectByStudentId(Integer studentId) {
+        return marksRepository.avgScoreSubjectByStudentId(studentId);
+    }
+
+
 }
 
 

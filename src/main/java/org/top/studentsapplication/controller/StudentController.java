@@ -106,6 +106,8 @@ public class StudentController {
         Student student = studentService.getById(id).get();
         model.addAttribute(student);
         model.addAttribute("listMarks",markService.listMarkStudentId(id));
+        model.addAttribute("average", markService.findAvgMarksByStudentId(id));
+        model.addAttribute("avgScore", markService.avgScoreSubjectByStudentId(id));
         return "student-info";
 
     }

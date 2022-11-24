@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Mark;
 import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.entity.Subject;
@@ -58,7 +57,7 @@ public class MarkController {
 
     // Обработчик для сохранения оценки
     @PostMapping("/newMark")
-    public String saveNewSubject(Mark mark, RedirectAttributes attrs) {
+    public String saveNewMark(Mark mark, RedirectAttributes attrs) {
 
         Mark saved = markService.saveMark(mark);
 
@@ -70,17 +69,29 @@ public class MarkController {
 
     // UPDATE (редактирование оценки)
     @GetMapping("/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
-        Mark mark = markService.getById(id).get();
+    public String showUpdateForm(Model model, @RequestParam(name = "date", required = false) String strDate
+            , @PathVariable("id") Integer id) {
+        Mark mark;
+        if (id != null) {
+            mark = markService.getById(id).get();
+        } else {
+            mark = new Mark();
+            if (strDate != null) {
+                mark.setDate(LocalDate.parse(strDate));
+            }
+        }
+
         model.addAttribute("mark", mark);
 
-        Student student = studentService.getById(id).get();
-        model.addAttribute("student", student);
-        Subject subject = subjectService.getById(id).get();
-        model.addAttribute("subject", subject);
+        List<Student> studentsList = studentService.listAllStudents();
+        model.addAttribute("studentsList", studentsList);
+
+        List<Subject> subjectList = subjectService.listAllSubjects();
+        model.addAttribute("subjectList", subjectList);
 
         return "mark-update";
     }
+
 
     // Обработчик для обновления оценки
     @PostMapping("/update")
@@ -95,17 +106,5 @@ public class MarkController {
         markService.deleteMarkByID(id);
         attrs.addFlashAttribute("message", "Mark deleted");
         return "redirect:/marks";
-
     }
-
-    @GetMapping("/marksStudentId/{id}")
-    public String showMarksStudentId(Model model, @PathVariable("id") Integer id) {
-        List<Mark> listMarks = markService.listMarkStudentId(id);
-        model.addAttribute("listMarks", listMarks);
-        model.addAttribute("student", studentService.getById(id));
-        model.addAttribute("subject", subjectService.getById(id));
-
-        return "marks-studentId";
-    }
-
 }

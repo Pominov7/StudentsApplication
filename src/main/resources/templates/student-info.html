@@ -6,24 +6,61 @@
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/footer.css}"/>
 </head>
-<body>
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
 <div class="wrapper">
     <div class="content">
-<div class="container-fluid text-center" th:object="${student}">
-    <h2>Student</h2>
-    <dl class="row">
-        <dt class="list-inline-item">ID</dt>
-        <dd class="list-inline-item"><p><span th:text="${id}"></span></p></dd>
+        <header th:insert="layout/layouts.html :: header "></header>
+        <br>
+        <div class="container-fluid text-center" th:object="${student}">
+            <h2>Student</h2>
+            <dl class="row">
+                <dt class="list-inline-item">ID</dt>
+                <dd class="list-inline-item"><p><span th:text="${id}"></span></p></dd>
 
-        <dt class="list-inline-item">First Name</dt>
-        <dd class="list-inline-item"><p><span th:text="${student.firstName}"></span></p></dd>
+                <dt class="list-inline-item">First Name</dt>
+                <dd class="list-inline-item"><p><span th:text="${student.firstName}"></span></p></dd>
 
-        <dt class="list-inline-item">Last Name</dt>
-        <dd class="list-inline-item"><p><span th:text="${student.lastName}"></span></p></dd>
-    </dl>
-</div>
+                <dt class="list-inline-item">Last Name</dt>
+                <dd class="list-inline-item"><p><span th:text="${student.lastName}"></span></p></dd>
+
+                <dt class="list-inline-item">Group</dt>
+                <div th:if="${student.group != null}">
+                    <dd class="list-inline-item"><p><span th:text="${student.group.groupName}"></span></p></dd>
+                </div>
+                <div th:if="${student.group == null}">
+                    <dd class="list-inline-item"><p><span th:text="${'Group: none'}"></span></p></dd>
+                </div>
+            </dl>
+
+            <h5>Table all marks</h5>
+            <div th:if="!${#lists.isEmpty(listMarks)}">
+                <table class="table table-bordered">
+                    <thead class="table-primary">
+                    <tr>
+                        <th>Id</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Mark</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="mark : ${listMarks}">
+                        <td th:text="${mark.id == null ? 'none' : mark.id}"/>
+                        <td th:text="${mark.subject == null ? 'none' : mark.subject}"/>
+                        <td th:text="${mark.date == null ? 'none' : mark.date}"/>
+                        <td th:text="${mark.assessment == null ? 'none' :  mark.assessment}"/>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div>
+        </div>
     </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>
 </div>
+
+
 </body>
 </html>

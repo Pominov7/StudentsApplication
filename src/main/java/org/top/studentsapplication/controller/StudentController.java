@@ -10,6 +10,7 @@ import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.GroupService;
+import org.top.studentsapplication.service.MarkService;
 import org.top.studentsapplication.service.StudentService;
 import org.top.studentsapplication.service.SubjectService;
 
@@ -26,6 +27,9 @@ public class StudentController {
 
     @Autowired
     private StudentNameFilter containsFilter;
+
+    @Autowired
+    private MarkService markService;
 
     // READ (получить всех студентов)
     @GetMapping
@@ -101,6 +105,7 @@ public class StudentController {
     public String infoStudent(@PathVariable("id") Integer id, Model model) {
         Student student = studentService.getById(id).get();
         model.addAttribute(student);
+        model.addAttribute("listMarks",markService.listMarkStudentId(id));
         return "student-info";
 
     }

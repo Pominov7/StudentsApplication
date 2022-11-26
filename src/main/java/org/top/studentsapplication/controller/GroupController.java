@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.top.studentsapplication.controller.filters.GroupNameFilter;
 import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.repository.StudentsRepository;
 import org.top.studentsapplication.service.GroupService;
@@ -19,6 +20,9 @@ public class GroupController {
     private final GroupService groupService;
 
     @Autowired
+    private GroupNameFilter containsFilter;
+
+    @Autowired
     public GroupController(GroupService groupService) {
         this.groupService = groupService;
     }
@@ -28,6 +32,16 @@ public class GroupController {
     public String showAllGroups(Model model) {
         List<Group> listGroups = groupService.listAllGroups();
         model.addAttribute("listGroups", listGroups);
+        model.addAttribute("containsFilter", containsFilter);
+        return "groups-list";
+    }
+
+
+    @PostMapping
+    public String showFilteredGroups(GroupNameFilter filter, Model model) {
+        List<Group> listGroups = filter.getFilteredGroups(groupService);
+        model.addAttribute("listGroups", listGroups);
+        model.addAttribute("containsFilter", filter);
         return "groups-list";
     }
 

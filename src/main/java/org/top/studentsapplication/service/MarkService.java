@@ -67,10 +67,12 @@ public class MarkService {
 
     }
 
+    // получение среднего балла по каждому предмету студента по Id студента
     public List<String> findAvgMarksByStudentId(Integer studentId){
-        return marksRepository.findAvgMarksByStudentId(studentId);
+        return marksRepository.findAvgMarksByStudentId(studentId).stream().toList();
     }
 
+    // получения среднего балла студента по всем предметам по Id студента
     public Double avgScoreSubjectByStudentId(Integer studentId) {
         return marksRepository.avgScoreSubjectByStudentId(studentId);
     }

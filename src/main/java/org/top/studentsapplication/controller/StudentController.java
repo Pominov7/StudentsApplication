@@ -53,8 +53,6 @@ public class StudentController {
     @GetMapping("/new")
     public String showNewStudentForm(Model model) {
         model.addAttribute("student", new Student());
-
-        //
         List<Group> groups = groupService.listAllGroups();
         model.addAttribute("groupsList", groups);
         return "student-form";

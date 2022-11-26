@@ -1,7 +1,6 @@
 package org.top.studentsapplication.service;
 
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.StudentsRepository;
 
@@ -53,7 +52,7 @@ public class StudentService {
         }
     }
 
-    // получения студентов по строке
+    // Получения студентов по строке
     public List<Student> findByContains(String match) {
         if (match == null || match.equals(""))
             return (List<Student>) repository.findAll();

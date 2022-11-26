@@ -1,5 +1,7 @@
 package org.top.studentsapplication.db.entity;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -21,10 +23,12 @@ public class Mark {
 
     @ManyToOne
     @JoinColumn(name = "student_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Student student;
 
     @ManyToOne
     @JoinColumn(name = "subject_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Subject subject;
 
     public Integer getId() {

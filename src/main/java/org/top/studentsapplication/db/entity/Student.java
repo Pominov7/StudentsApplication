@@ -20,6 +20,16 @@ public class Student {
     @JoinColumn(name = "group_id", nullable = true)
     private Group group;
 
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
+    private Set<Mark> assessments;
+
+    public Set<Mark> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(Set<Mark> assessments) {
+        this.assessments = assessments;
+    }
 
     public Group getGroup() {
         return group;

@@ -14,7 +14,6 @@ public interface MarksRepository extends CrudRepository<Mark, Integer> {
             "avg(a.assessment) from Mark a join Subject s on a.subject = s where a.student.id=:studentId " +
             "group by a.subject.id")
     List<String> findAvgMarksByStudentId(@Param("studentId") Integer studentId);
-
     // получения среднего балла студента по всем предметам по Id студента
     @Query("select avg(a.assessment) from Mark a where a.student.id=:studentId")
     Double avgScoreSubjectByStudentId(@Param("studentId") Integer studentId);

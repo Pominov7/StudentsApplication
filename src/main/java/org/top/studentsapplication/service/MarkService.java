@@ -2,7 +2,6 @@ package org.top.studentsapplication.service;
 
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Mark;
-import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.MarksRepository;
 
 import java.util.*;
@@ -11,7 +10,6 @@ import java.util.*;
 public class MarkService {
 
     private final MarksRepository marksRepository;
-
 
     public MarkService(MarksRepository marksRepository) {
         this.marksRepository = marksRepository;
@@ -52,7 +50,7 @@ public class MarkService {
         result.ifPresent(marksRepository::delete);
     }
 
-    //вернуть список оценок для определенного студента
+    // Вернуть список оценок для определенного студента
     public List<Mark> listMarkStudentId(Integer id) {
         List<Mark> marks = (List<Mark>) marksRepository.findAll();
         List<Mark> result = new ArrayList<>();
@@ -68,7 +66,8 @@ public class MarkService {
     }
 
     // получение среднего балла по каждому предмету студента по Id студента
-    public List<String> findAvgMarksByStudentId(Integer studentId){
+    public List<String> findAvgMarksByStudentId(Integer studentId) {
+
         return marksRepository.findAvgMarksByStudentId(studentId).stream().toList();
     }
 
@@ -76,8 +75,6 @@ public class MarkService {
     public Double avgScoreSubjectByStudentId(Integer studentId) {
         return marksRepository.avgScoreSubjectByStudentId(studentId);
     }
-
-
 }
 
 

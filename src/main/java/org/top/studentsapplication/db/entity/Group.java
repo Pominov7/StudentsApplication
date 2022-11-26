@@ -18,6 +18,10 @@ public class Group {
     @OneToMany(mappedBy = "group", cascade = {CascadeType.PERSIST})
     private Set<Student> students;
 
+    @PreRemove
+    private void preRemove(){
+        students.forEach(student -> student.setGroup(null));
+    }
     public Set<Student> getStudents() {
         return students;
     }

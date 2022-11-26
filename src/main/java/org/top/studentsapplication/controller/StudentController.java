@@ -40,6 +40,7 @@ public class StudentController {
         return "students-list";
     }
 
+    // Фильтр студентов по имени
     @PostMapping
     public String showFilteredStudents(StudentNameFilter filter, Model model) {
         List<Student> listStudents = filter.getFilteredStudents(studentService);
@@ -103,7 +104,7 @@ public class StudentController {
     public String infoStudent(@PathVariable("id") Integer id, Model model) {
         Student student = studentService.getById(id).get();
         model.addAttribute(student);
-        model.addAttribute("listMarks",markService.listMarkStudentId(id));
+        model.addAttribute("listMarks", markService.listMarkStudentId(id));
         model.addAttribute("average", markService.findAvgMarksByStudentId(id));
         model.addAttribute("avgScore", markService.avgScoreSubjectByStudentId(id));
         return "student-info";

@@ -16,8 +16,8 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/subjects")
 public class SubjectController {
-
-    private final SubjectService subjectService;
+    @Autowired
+    private SubjectService subjectService;
 
     @Autowired
     private SubjectNameFilter containsFilter;
@@ -39,7 +39,7 @@ public class SubjectController {
 
     @PostMapping
     public String showFilteredSubjects(SubjectNameFilter filter, Model model) {
-        List<Subject> listSubjects = filter.getFilteredSubject(subjectService);
+        List<Subject> listSubjects = filter.getFilteredSubjects(subjectService);
         model.addAttribute("listSubjects", listSubjects);
         model.addAttribute("containsFilter", filter);
         return "subjects-list";
@@ -81,7 +81,7 @@ public class SubjectController {
         return "redirect:/subjects";
     }
 
-    // UPDATE (редактирование полей группы)
+    // UPDATE (редактирование полей предмета)
     @GetMapping("/edit/{id}")
     public String showUpdateFormGroup(@PathVariable("id") Integer id, Model model) {
         Subject subject = subjectService.getById(id)

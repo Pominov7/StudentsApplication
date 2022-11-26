@@ -17,7 +17,8 @@ import java.util.List;
 public class GroupController {
     @Autowired
     private StudentsRepository studentsRepository;
-    private final GroupService groupService;
+    @Autowired
+    private GroupService groupService;
 
     @Autowired
     private GroupNameFilter containsFilter;
@@ -36,7 +37,7 @@ public class GroupController {
         return "groups-list";
     }
 
-
+    // Фильтр групп по название
     @PostMapping
     public String showFilteredGroups(GroupNameFilter filter, Model model) {
         List<Group> listGroups = filter.getFilteredGroups(groupService);
@@ -44,7 +45,6 @@ public class GroupController {
         model.addAttribute("containsFilter", filter);
         return "groups-list";
     }
-
 
     // CREATE (добавить группу)
     @GetMapping("/newGroup")

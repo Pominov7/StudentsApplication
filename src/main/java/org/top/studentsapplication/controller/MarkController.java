@@ -18,18 +18,17 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "marks")
 public class MarkController {
-
-    private final MarkService markService;
-    private final StudentService studentService;
-
-    private final SubjectService subjectService;
-
+    @Autowired
+    private MarkService markService;
+    @Autowired
+    private StudentService studentService;
+    @Autowired
+    private SubjectService subjectService;
 
     @Autowired
-    public MarkController(MarkService markService, StudentService studentService, SubjectService subjectService) {
+    public MarkController(MarkService markService) {
         this.markService = markService;
-        this.studentService = studentService;
-        this.subjectService = subjectService;
+
     }
 
     // READ (получить все оценки)

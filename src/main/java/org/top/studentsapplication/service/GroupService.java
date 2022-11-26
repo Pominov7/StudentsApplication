@@ -2,7 +2,6 @@ package org.top.studentsapplication.service;
 
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Group;
-import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.db.repository.GroupRepository;
 
 import java.util.List;
@@ -40,7 +39,6 @@ public class GroupService {
         // 2. если такая группа есть, то удалить её
         result.ifPresent(groupRepository::delete);
     }
-
 
     // Редактирование полей группы
     public void updateGroup(Group group) {

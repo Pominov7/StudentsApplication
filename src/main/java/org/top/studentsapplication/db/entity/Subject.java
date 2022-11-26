@@ -15,6 +15,17 @@ public class Subject {
     @Column(nullable = false, length = 50)
     private String subjectName;
 
+    @OneToMany(mappedBy = "subject", cascade = CascadeType.PERSIST)
+    private Set<Mark> assessments;
+
+    public Set<Mark> getAssessments() {
+        return assessments;
+    }
+
+    public void setAssessments(Set<Mark> assessments) {
+        this.assessments = assessments;
+    }
+
     public void setId(Integer id) {
         this.id = id;
     }

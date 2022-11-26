@@ -56,4 +56,14 @@ public class SubjectService {
         Optional<Subject> result = subjectRepository.findById(id);
         result.ifPresent(subjectRepository::delete);
     }
+
+    // получения предмета по строке
+    public List<Subject> findSubjectByContains(String match) {
+        if (match == null || match.equals(""))
+            return (List<Subject>) subjectRepository.findAll();
+        return ((List<Subject>) subjectRepository.findAll())
+                .stream()
+                .filter(s -> s.getSubjectName().contains(match))
+                .toList();
+    }
 }

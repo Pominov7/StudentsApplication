@@ -16,6 +16,14 @@
             <div th:if="${message != null}" class="alert alert-success">
                 [[${message}]]
             </div>
+
+            <!-- фильтр-->
+            <div>
+                <form method="post" th:action="@{/subjects}" th:object="${containsFilter}">
+                    <input type="text" th:field="*{match}"/>
+                    <button>Find</button>
+                </form>
+            </div>
             <table class="table table-bordered">
                 <thead class="table-primary">
                 <tr>

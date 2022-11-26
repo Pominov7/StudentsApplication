@@ -2,9 +2,7 @@ package org.top.studentsapplication.controller.filters;
 
 import org.springframework.stereotype.Service;
 import org.top.studentsapplication.db.entity.Group;
-import org.top.studentsapplication.db.entity.Student;
 import org.top.studentsapplication.service.GroupService;
-import org.top.studentsapplication.service.StudentService;
 
 import java.util.List;
 

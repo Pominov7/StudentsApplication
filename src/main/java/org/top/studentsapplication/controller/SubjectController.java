@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.top.studentsapplication.controller.filters.GroupNameFilter;
+import org.top.studentsapplication.controller.filters.SubjectNameFilter;
 import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.SubjectService;
@@ -18,6 +20,9 @@ public class SubjectController {
     private final SubjectService subjectService;
 
     @Autowired
+    private SubjectNameFilter containsFilter;
+
+    @Autowired
     public SubjectController(SubjectService subjectService) {
         this.subjectService = subjectService;
     }
@@ -27,6 +32,16 @@ public class SubjectController {
     public String showAllSubjects(Model model) {
         List<Subject> listSubjects = subjectService.listAllSubjects();
         model.addAttribute("listSubjects", listSubjects);
+        model.addAttribute("containsFilter", containsFilter);
+        return "subjects-list";
+    }
+
+
+    @PostMapping
+    public String showFilteredSubjects(SubjectNameFilter filter, Model model) {
+        List<Subject> listSubjects = filter.getFilteredSubject(subjectService);
+        model.addAttribute("listSubjects", listSubjects);
+        model.addAttribute("containsFilter", filter);
         return "subjects-list";
     }
 

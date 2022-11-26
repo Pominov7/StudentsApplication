@@ -24,6 +24,11 @@
                 </form>
             </div>
             <br>
+            <!-- ссылка на добавление нового студента -->
+            <div class="align-content-lg-end">
+                <a class="btn btn-success btn-sm" th:href="@{/students/new}">Add new Student</a>
+            </div>
+            <br>
             <table class="table table-bordered">
                 <thead class="table-primary">
                 <tr>
@@ -43,17 +48,16 @@
                         <td th:if="${student.group != null}">[[${student.group.groupName}]]</td>
                         <td th:if="${student.group == null}">NONE</td>
                         <td>
-                            <a th:href="@{'/students/edit/' + ${student.id}}" class="btn btn-secondary">Edit</a>
-                            <a th:href="@{'/students/delete/' + ${student.id}}" class="btn btn-danger">Delete</a>
-                            <a th:href="@{'/students/details/' + ${student.id}}" class="btn btn-warning">Details</a>
+                            <a th:href="@{'/students/edit/' + ${student.id}}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a th:href="@{'/students/delete/' + ${student.id}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a th:href="@{'/students/details/' + ${student.id}}"
+                               class="btn btn-warning btn-sm">Details</a>
                         </td>
                     </tr>
                 </th:block>
                 </tbody>
             </table>
 
-            <!-- ссылка на добавление нового студента -->
-            <a th:href="@{/students/new}"> Add new Student </a>
         </div>
     </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>

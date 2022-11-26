@@ -24,6 +24,12 @@
                     <button>Find</button>
                 </form>
             </div>
+            <br>
+            <!-- ссылка на добавление новой группы -->
+            <div class="align-content-lg-end">
+                <a class="btn btn-success btn-sm" th:href="@{/groups/newGroup}"> Add new Group </a>
+            </div>
+            <br>
             <table class="table table-bordered">
                 <thead class="table-primary">
                 <tr>
@@ -38,16 +44,15 @@
                         <td>[[${group.id}]]</td>
                         <td>[[${group.groupName}]]</td>
                         <td>
-                            <a th:href="@{'/groups/edit/' + ${group.id}}" class="btn btn-secondary">Edit</a>
-                            <a th:href="@{'/groups/delete/' + ${group.id}}" class="btn btn-danger">Delete</a>
-                            <a th:href="@{'/groups/details/' + ${group.id}}" class="btn btn-warning">Details</a>
+                            <a th:href="@{'/groups/edit/' + ${group.id}}" class="btn btn-secondary btn-sm">Edit</a>
+                            <a th:href="@{'/groups/delete/' + ${group.id}}" class="btn btn-danger btn-sm">Delete</a>
+                            <a th:href="@{'/groups/details/' + ${group.id}}" class="btn btn-warning btn-sm">Details</a>
                         </td>
                     </tr>
                 </th:block>
                 </tbody>
             </table>
-            <!-- ссылка на добавление нового студента -->
-            <a th:href="@{/groups/newGroup}"> Add new Group </a>
+
         </div>
     </div>
     <footer th:insert="layout/layouts.html :: footer "></footer>

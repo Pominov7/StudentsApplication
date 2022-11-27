@@ -73,7 +73,7 @@ public class MarkController {
         Mark mark;
         if (id != null) {
             mark = markService.getById(id).get();
-        } else {
+        } else   {
             mark = new Mark();
             if (strDate != null) {
                 mark.setDate(LocalDate.parse(strDate));

@@ -8,11 +8,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.top.studentsapplication.controller.filters.StudentNameFilter;
 import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Student;
-import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.GroupService;
 import org.top.studentsapplication.service.MarkService;
 import org.top.studentsapplication.service.StudentService;
-import org.top.studentsapplication.service.SubjectService;
 
 import java.util.List;
 

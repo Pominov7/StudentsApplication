@@ -1,7 +1,5 @@
 package org.top.studentsapplication.db.entity;
 
-import org.top.studentsapplication.db.entity.Student;
-
 import javax.persistence.*;
 import java.util.Set;
 

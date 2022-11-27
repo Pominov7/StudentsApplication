@@ -5,9 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import org.top.studentsapplication.controller.filters.GroupNameFilter;
 import org.top.studentsapplication.controller.filters.SubjectNameFilter;
-import org.top.studentsapplication.db.entity.Group;
 import org.top.studentsapplication.db.entity.Subject;
 import org.top.studentsapplication.service.SubjectService;
 
@@ -67,7 +65,6 @@ public class SubjectController {
     // DELETE (обработчик для удаления предмета)
     @GetMapping("/delete/{id}")
     public String deleteSubject(@PathVariable("id") Integer id, RedirectAttributes attrs) {
-
         subjectService.deleteSubjectByID(id);
         attrs.addFlashAttribute("message", "Subject deleted");
         return "redirect:/subjects";

@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.top.studentsapplication.db.entity.Mark;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface MarksRepository extends CrudRepository<Mark, Integer> {
@@ -17,4 +18,5 @@ public interface MarksRepository extends CrudRepository<Mark, Integer> {
     // получения среднего балла студента по всем предметам по Id студента
     @Query("select avg(a.assessment) from Mark a where a.student.id=:studentId")
     Double avgScoreSubjectByStudentId(@Param("studentId") Integer studentId);
+
 }

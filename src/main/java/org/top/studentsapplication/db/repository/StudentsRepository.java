@@ -14,5 +14,7 @@ public interface StudentsRepository extends CrudRepository<Student, Integer> {
     @Modifying
     @Query(value = "UPDATE student_t SET group_id=NULL WHERE group_id=?1", nativeQuery = true)
     int clearGroupInStudentByGroup(int id);
+
+
 }
 

@@ -23,4 +23,10 @@ public class UserService {
         user.setPassword(password); // пароль надо хэшировать
         userRepository.save(user);   // сохранил пользователя
     }
+
+    // метод получения объекта пользователя по username
+    public User getUserByUserName(String userName) {
+        return userRepository.findByUsername(userName);
+    }
+
 }

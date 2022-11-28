@@ -5,4 +5,6 @@ import org.top.studentsapplication.db.entity.User;
 
 // интерфейс для работы с БД с таблицей User
 public interface UserRepository extends CrudRepository<User, Integer> {
+
+    User findByUsername(String userName);
 }
